@@ -1,0 +1,16 @@
+flask
+pypdf
+pdfplumber
+python-dotenv
+pinecone[grpc]
+flask-cors
+
+sentence-transformers==2.2.2
+langchain
+langchain-pinecone
+langchain_community
+langchain_openai
+langchain_experimental
+langchain_google_genai
+
+-e .

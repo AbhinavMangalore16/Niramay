@@ -326,3 +326,7 @@ datasets/
 
 # Ollama-related files  
 .ollama/  
+
+models/
+*/models/
+*/.csv
