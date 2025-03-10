@@ -1,4 +1,4 @@
-# Niramaya Assistant - Frontend
+# Niramaya Assistant - Backend
 
 ## 📌 Overview
 **Niramaya** is a AI vernacular diagnostic RAG-based chatbot that retrieves and generates responses based on clinical knowledge from evidence and documents. It uses **Pinecone as a Vector Database** for efficient similarity search.
