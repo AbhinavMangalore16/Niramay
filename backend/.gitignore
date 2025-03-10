@@ -330,3 +330,5 @@ datasets/
 models/
 */models/
 */.csv
+
+.ipynb
