@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niramay - AI Medical Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown Support -->
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-lg bg-gray-800 shadow-lg rounded-lg p-5">
+        <h1 class="text-xl font-semibold text-center text-blue-400 mb-4">Niramay - AI Medical Assistant</h1>
+        
+        <div id="chat-box" class="h-80 overflow-y-auto p-3 bg-gray-700 rounded-lg flex flex-col space-y-3">
+            <!-- Chat messages appear here -->
+        </div>
+        
+        <div class="flex items-center space-x-2 mt-4">
+            <input type="text" id="user-input" placeholder="Ask me about your symptoms..." 
+                   class="w-full p-2 text-black rounded-md focus:ring-2 focus:ring-blue-400 outline-none">
+            <button onclick="sendMessage()" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                Send
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value.trim();
+            if (!userInput) return;
+
+            let chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div class="self-end bg-blue-500 text-white p-2 rounded-lg max-w-xs"><strong>You:</strong> ${userInput}</div>`;
+            document.getElementById("user-input").value = "";
+
+            // Show loading message
+            chatBox.innerHTML += `<div class="bot-msg bg-gray-600 text-white p-2 rounded-lg max-w-xs self-start italic">Niramay is typing...</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            fetch("/get", {
+                method: "POST",
+                body: new URLSearchParams({ "msg": userInput }),
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector(".bot-msg.italic").remove(); // Remove loading indicator
+                
+                // Render Markdown response
+                let formattedResponse = marked.parse(data);
+                chatBox.innerHTML += `<div class="bg-gray-600 text-white p-2 rounded-lg max-w-xs self-start"><strong>Niramay:</strong> <div class="markdown">${formattedResponse}</div></div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+    </script>
+
+</body>
+</html>
