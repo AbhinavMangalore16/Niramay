@@ -1,4 +1,4 @@
-# NIramaya
+# Niramaya
 
 Niramaya is an AI-powered vernacular healthcare assistant that analyzes symptoms and provides guidance in regional Indian languages. It leverages medical NLP models, rule-based triage, and a vector database for fast and accurate information retrieval.
 
