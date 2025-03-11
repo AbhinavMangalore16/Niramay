@@ -8,6 +8,7 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.prompts import ChatPromptTemplate
 from src.utils.prompts import *
+from huggingface_hub import login
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,10 +19,13 @@ CORS(app)
 PINECONE_API_KEY = os.getenv('PINECONE_DB_KEY')
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 SYSTEM_PROMPT = os.getenv('SYSTEM_PROMPT')
+HF_TOKEN = os.getenv('HF_TOKEN')
 
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 os.environ["GEMINI_API_KEY"] = GEMINI_API_KEY
 os.environ["SYSTEM_PROMPT"] = SYSTEM_PROMPT
+
+login(HF_TOKEN)
 
 embeds =hf_embeds()
 

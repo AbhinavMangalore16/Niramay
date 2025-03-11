@@ -16,6 +16,8 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
+
+
 const HeroSection = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
