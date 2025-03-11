@@ -30,7 +30,7 @@ export default function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [muted, setMuted] = useState(false);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<any | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -77,12 +77,12 @@ export default function Chat() {
     }
 
     setIsRecording(true);
-    const recognition = new (window as any).webkitSpeechRecognition() || new SpeechRecognition();
+    const recognition = new (window as any).webkitSpeechRecognition();
     recognition.lang = language;
     recognition.continuous = false;
     recognition.interimResults = false;
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
+    recognition.onresult = (event: any) => {
       setMessage(event.results[0][0].transcript);
     };
 
@@ -128,7 +128,7 @@ export default function Chat() {
             <h2 className="text-xl sm:text-3xl font-bold text-blue-800">Niramaya</h2>
             {user && (
               <div className="flex items-center gap-2">
-                <img src={user.picture} alt={user.name} className="w-8 h-8 rounded-full" />
+                <img src={user.picture ?? "/default-avatar.png"} alt={user.name ?? "User"} className="w-8 h-8 rounded-full" />
                 <span className="text-sm font-semibold">{user.name}</span>
                 <Link href="/api/auth/logout">
                   <Button variant="outline" size="icon">
