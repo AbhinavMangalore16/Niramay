@@ -146,16 +146,39 @@ export default function Chat() {
                 <SelectValue placeholder="Select a language" />
               </SelectTrigger>
               <SelectContent>
-                {[["en", "English"], ["hi", "हिन्दी (Hindi)"], ["bn", "বাংলা (Bengali)"], ["ta", "தமிழ் (Tamil)"]].map(
-                  ([code, lang]) => (
-                    <SelectItem key={code} value={code}>
-                      {lang}
-                    </SelectItem>
-                  )
-                )}
+                {[
+                  ["en", "English"],
+                  ["as", "অসমীয়া (Assamese)"],
+                  ["bn", "বাংলা (Bengali)"],
+                  ["brx", "बड़ो (Bodo)"],
+                  ["gu", "ગુજરાતી (Gujarati)"],
+                  ["hi", "हिन्दी (Hindi)"],
+                  ["kok", "कोंकणी (Konkani)"],
+                  ["mai", "मैथिली (Maithili)"],
+                  ["doi", "डोगरी (Dogri)"],
+                  ["sat", "ᱥᱟᱱᱛᱟᱞᱤ (Santhali)"],
+                  ["ks", "کشميري / कश्मीरी (Kashmiri)"],
+                  ["kn", "ಕನ್ನಡ (Kannada)"],
+                  ["ml", "മലയാളം (Malayalam)"],
+                  ["mni", "ꯃꯤꯇꯩꯂꯣꯟ (Manipuri)"],
+                  ["mr", "मराठी (Marathi)"],
+                  ["ne", "नेपाली (Nepali)"],
+                  ["or", "ଓଡ଼ିଆ (Odia)"],
+                  ["pa", "ਪੰਜਾਬੀ / پنجابی (Punjabi)"],
+                  ["sa", "संस्कृतम् (Sanskrit)"],
+                  ["sd", "سنڌي / सिन्धी (Sindhi)"],
+                  ["ta", "தமிழ் (Tamil)"],
+                  ["te", "తెలుగు (Telugu)"],
+                  ["ur", "اردو (Urdu)"],
+                ].map(([code, lang]) => (
+                  <SelectItem key={code} value={code}>
+                    {lang}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
+
 
           {/* Chat Messages */}
           <div className="h-80 sm:h-[500px] overflow-y-auto border p-3 rounded bg-gray-50 space-y-2">
